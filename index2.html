@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Uniti si cambia</title>
+<style>
+:root{--bg:#fff;--ink:#111;--mut:#737373;--acc:#d62976;--acc-ink:#fff;--line:#dbdbdb;--soft:#efefef;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--ink:#f5f5f5;--mut:#a8a8a8;--acc:#ff5c9a;--acc-ink:#000;--line:#262626;--soft:#262626;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#000;--ink:#f5f5f5;--mut:#a8a8a8;--acc:#ff5c9a;--acc-ink:#000;--line:#262626;--soft:#262626;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.top div,.nav div,main{max-width:640px;margin:0 auto}
+.top div{display:flex;justify-content:space-between;align-items:center;padding:10px 16px}
+.logo{font:italic 700 25px Georgia,"Times New Roman",serif;letter-spacing:-.5px}
+main{padding-bottom:90px}
+button{font:inherit;cursor:pointer}
+.ib{background:none;border:0;padding:0;color:var(--ink);display:inline-flex}
+.ib svg,.nav svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ib.on svg{fill:var(--acc);stroke:var(--acc)}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--bg);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.nav div{display:flex;justify-content:space-around;padding:10px 0}
+.nav button{background:none;border:0;color:var(--mut);padding:2px 12px}
+.nav button.on{color:var(--ink)}
+.nav button.on svg{stroke-width:2.6}
+.stories{display:flex;gap:14px;overflow-x:auto;padding:12px 16px;border-bottom:1px solid var(--line)}
+.st{flex:0 0 auto;text-align:center;font-size:12px;width:66px;background:none;border:0;color:var(--ink);padding:0}
+.ring{width:64px;height:64px;border-radius:50%;padding:3px;background:conic-gradient(#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75);margin-bottom:4px}
+.ring.off{background:var(--line)}
+.ring i{width:100%;height:100%;border-radius:50%;background:var(--bg);border:2px solid var(--bg);display:grid;place-items:center;font-size:26px;font-style:normal}
+.post{border-bottom:1px solid var(--line);padding-bottom:14px}
+.ph{display:flex;align-items:center;gap:10px;padding:10px 16px}
+.ph .ring{width:36px;height:36px;padding:2px;margin:0}.ph .ring i{font-size:16px}
+.ph b{display:block;font-size:14px}.ph small{color:var(--mut)}
+.media{height:170px;position:relative;overflow:hidden;background:#6a1b1b}
+.media svg{position:absolute;inset:0;width:100%;height:100%}
+.acts{display:flex;gap:14px;align-items:center;padding:10px 16px 2px}
+.pad{padding:0 16px}
+.bar{height:6px;background:var(--soft);border-radius:99px;overflow:hidden;margin:8px 0}
+.bar i{display:block;height:100%;background:var(--acc);border-radius:99px}
+.mut{color:var(--mut)}
+.tag{font-size:12px;font-weight:600;color:var(--acc)}
+.btn{background:var(--acc);color:var(--acc-ink);border:0;border-radius:8px;padding:10px 14px;font-weight:600;width:100%}
+.btn.ghost{background:var(--soft);color:var(--ink)}
+.btn.sm{width:auto;padding:7px 12px;font-size:13px}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 16px}
+.card h2,.pad h2{margin:2px 0 6px;font-size:18px}
+h3{margin:18px 0 8px;font-size:16px}
+input,textarea,select{width:100%;font:16px system-ui,sans-serif;padding:11px;border:1px solid var(--line);border-radius:8px;background:var(--soft);color:var(--ink);margin-bottom:10px}
+textarea{min-height:100px;resize:vertical}
+label{font-size:12px;font-weight:600;color:var(--mut);display:block;margin-bottom:3px}
+.row{display:flex;gap:8px;align-items:center}.row input{margin:0}
+.seg{display:flex;margin:12px 16px;background:var(--soft);border-radius:10px;padding:3px}
+.seg button{flex:1;border:0;background:none;color:var(--mut);padding:8px;border-radius:8px;font-weight:600}
+.seg button.on{background:var(--bg);color:var(--ink)}
+.toast{background:var(--ink);color:var(--bg);margin:10px 16px;padding:10px 14px;border-radius:10px;font-size:14px;text-align:center}
+.note{text-align:center;color:var(--mut);padding:24px 16px}
+.chat{max-height:340px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.bub{background:var(--soft);border-radius:16px;padding:8px 12px;max-width:85%;white-space:pre-wrap;word-break:break-word}
+.bub small{display:block;color:var(--mut);font-size:11px}
+.bub.me{background:var(--acc);color:var(--acc-ink);align-self:flex-end}.bub.me small{color:inherit;opacity:.8}
+.amts{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.amts button{border:1px solid var(--line);background:none;color:var(--ink);border-radius:20px;padding:8px 16px}
+.amts button.on{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+.chk{display:flex;gap:8px;align-items:flex-start;font-weight:400;font-size:13px}.chk input{width:auto;margin:2px 0 0}
+.stats{display:flex;text-align:center;padding:12px 16px}.stats div{flex:1}.stats b{display:block;font-size:20px}
+.big{font-size:30px;font-weight:700}
+.av{width:72px;height:72px;font-size:30px}
+</style>
+</head>
+<body>
+<header class="top"><div><span class="logo">Uniti si cambia</span><button class="ib" data-act="go" data-v="chat" aria-label="Chat aperta"><svg viewBox="0 0 24 24"><path d="M22 3L2 11l7 3 3 7z M22 3L9 14"/></svg></button></div></header>
+<main id="app"></main>
+<nav class="nav"><div id="nav"></div></nav>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+(function(){
+var app=document.getElementById("app"),navEl=document.getElementById("nav");
+var db=null,me=null,canWrite=true,isAdmin=false;
+var CATS=["Ambiente","Lavoro","Città","Scuola","Salute","Diritti","Altro"],EMO={Tutte:"🔥",Ambiente:"🌱",Lavoro:"🛠️",Città:"🏙️",Scuola:"🎓",Salute:"🩺",Diritti:"✊",Altro:"✨"};
+var SECT=["Commercio","Industria","Logistica","Sanità","Scuola","Pubblico impiego","Servizi","Altro"];
+var D={pet:[],sig:[],ev:[],rsvp:[],chat:[],gchat:[],mem:[],pl:[],apps:[]};
+var view="home",gid=null,cat="Tutte",q="",ctype="pet",sform=false,amt=10,nick="",msg="",DONATION_URL="";
+var IC={
+home:'<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+search:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/>',
+plus:'<rect x="3" y="3" width="18" height="18" rx="5"/><path d="M12 8v8M8 12h8"/>',
+cal:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 15-5 16 0"/>',
+heart:'<path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"/>',
+bub:'<path d="M21 12a8 8 0 0 1-11.5 7.2L3 21l1.8-5.5A8 8 0 1 1 21 12z"/>',
+send:'<path d="M22 3L2 11l7 3 3 7z M22 3L9 14"/>'};
+function ic(n){return '<svg viewBox="0 0 24 24">'+IC[n]+'</svg>';}
+function esc(s){var d=document.createElement("div");d.textContent=String(s==null?"":s);return d.innerHTML;}
+function opts(a){return a.map(function(c){return "<option>"+c+"</option>";}).join("");}
+function hash(s){var h=7;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))%100000;return h;}
+function scene(id){
+  var h=hash(id),k=h%3,s=h||1,P=[["#f08a5d","#6a1b1b"],["#355c7d","#c06c84"],["#f9d423","#e65c00"]][k],o="";
+  function r(){s=(s*9301+49297)%233280;return s/233280;}
+  function fig(x,b,sign,fist){var c="#1c1b19";
+    o+='<circle cx="'+x+'" cy="'+(b-36)+'" r="6" fill="'+c+'"/><rect x="'+(x-6)+'" y="'+(b-30)+'" width="12" height="26" rx="5" fill="'+c+'"/>';
+    if(fist)o+='<rect x="'+(x+4)+'" y="'+(b-50)+'" width="3.5" height="20" rx="1.7" fill="'+c+'" transform="rotate(-14 '+(x+5)+' '+(b-30)+')"/><circle cx="'+(x+4)+'" cy="'+(b-52)+'" r="3.6" fill="'+c+'"/>';
+    if(sign)o+='<rect x="'+(x+8)+'" y="'+(b-62)+'" width="2.4" height="38" fill="'+c+'"/><rect x="'+(x-4)+'" y="'+(b-76)+'" width="26" height="16" rx="2" fill="'+sign+'"/>';}
+  var i;
+  if(k===0)for(i=0;i<12;i++)fig(20+i*34+Math.round(r()*10-5),132,["#fff","#c8442b","#f2c14e"][Math.floor(r()*3)]);
+  else if(k===1)for(i=0;i<15;i++)fig(14+i*28+Math.round(r()*8-4),136,null,true);
+  else{o+='<rect x="40" y="36" width="320" height="30" rx="3" fill="#fff"/><text x="200" y="57" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="19" fill="#c8442b">UNITI SI VINCE</text><rect x="42" y="66" width="3" height="60" fill="#1c1b19"/><rect x="355" y="66" width="3" height="60" fill="#1c1b19"/>';for(i=0;i<10;i++)fig(30+i*38,134);}
+  return '<svg viewBox="0 0 400 140" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g'+h+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+P[0]+'"/><stop offset="1" stop-color="'+P[1]+'"/></linearGradient></defs><rect width="400" height="140" fill="url(#g'+h+')"/>'+o+'</svg>';
+}
+function pet(id){return D.pet.filter(function(p){return p.id===id;})[0];}
+function cnt(id){return D.sig.filter(function(s){return s.data().pid===id;}).length;}
+function signed(id){return D.sig.some(function(s){return s.id===id+"_"+me;});}
+function when(d){return d?new Date(d).toLocaleString("it-IT",{dateStyle:"full",timeStyle:"short"}):"";}
+function fail(){msg="Operazione non riuscita. Riprova.";render();}
+function v(id){var e=document.getElementById(id);return e?e.value.trim():"";}
+
+function post(p){
+  var x=p.data(),c=cnt(p.id),g=Number(x.goal)||100,on=signed(p.id),pct=Math.min(100,Math.round(c/g*100));
+  return '<div class="post"><div class="ph"><div class="ring"><i>'+(EMO[x.cat]||"✨")+'</i></div><div><b>'+esc(x.cat||"Altro")+'</b><small>'+new Date(x.at||0).toLocaleDateString("it-IT")+'</small></div></div>'+
+  '<div class="media" data-act="group" data-id="'+esc(p.id)+'">'+scene(p.id)+'</div>'+
+  '<div class="acts"><button class="ib'+(on?" on":"")+'" data-act="sign" data-id="'+esc(p.id)+'" aria-label="Firma">'+ic("heart")+'</button><button class="ib" data-act="group" data-id="'+esc(p.id)+'" aria-label="Gruppo">'+ic("bub")+'</button><button class="ib" data-act="share" data-id="'+esc(p.id)+'" aria-label="Condividi">'+ic("send")+'</button></div>'+
+  '<div class="pad"><b>'+c+' firme</b> <span class="mut">· obiettivo '+g+'</span><div class="bar"><i style="width:'+pct+'%"></i></div><b data-act="group" data-id="'+esc(p.id)+'">'+esc(x.title)+'</b><div class="mut" style="white-space:pre-wrap">'+esc(x.description)+'</div><div style="margin-top:10px"><button class="btn'+(on?" ghost":"")+'" data-act="'+(on?"group":"sign")+'" data-id="'+esc(p.id)+'"'+(canWrite||on?"":" disabled")+'>'+(on?"Sei nel gruppo ✓ · Apri":"Firma e unisciti al gruppo")+'</button></div></div></div>';
+}
+function vHome(){
+  var h='<div class="stories">'+["Tutte"].concat(CATS).map(function(c){return '<button class="st" data-act="cat" data-id="'+c+'"><div class="ring'+(c===cat?"":" off")+'"><i>'+EMO[c]+'</i></div>'+c+'</button>';}).join("")+'</div>';
+  var l=D.pet.filter(function(p){return cat==="Tutte"||p.data().cat===cat;}).sort(function(a,b){return (b.data().at||0)-(a.data().at||0);});
+  if(!l.length)h+='<p class="note">Nessuna petizione qui. Tocca ＋ per crearne una.</p>';
+  return h+l.map(post).join("");
+}
+function vSearch(){
+  var h='<div class="pad" style="padding-top:12px"><input id="q" placeholder="Cerca petizioni" value="'+esc(q)+'"></div>',ql=q.toLowerCase();
+  var l=D.pet.filter(function(p){var x=p.data();return !ql||(x.title+" "+x.description).toLowerCase().indexOf(ql)>=0;}).sort(function(a,b){return cnt(b.id)-cnt(a.id);});
+  h+='<div class="pad"><b>'+(q?"Risultati":"In tendenza")+'</b></div>';
+  if(!l.length)h+='<p class="note">Nessun risultato.</p>';
+  return h+l.map(function(p){return '<div class="ph" data-act="group" data-id="'+esc(p.id)+'" style="cursor:pointer"><div class="ring"><i>'+(EMO[p.data().cat]||"✨")+'</i></div><div><b>'+esc(p.data().title)+'</b><small>'+cnt(p.id)+' firme</small></div></div>';}).join("");
+}
+function evCard(e){
+  var x=e.data(),n=D.rsvp.filter(function(r){return r.data().eid===e.id;}).length,on=D.rsvp.some(function(r){return r.id===e.id+"_"+me;}),p=x.pid&&pet(x.pid);
+  return '<div class="card"><span class="tag">'+(x.kind==="sciopero"?"SCIOPERO":"EVENTO")+(p?" · "+esc(p.data().title):"")+' </span><h2>'+esc(x.title)+'</h2><div class="mut">'+esc(when(x.date))+'<br>📍 '+esc(x.place)+'</div><p style="white-space:pre-wrap">'+esc(x.desc)+'</p><div class="row"><button class="btn'+(on?" ghost":"")+'" data-act="rsvp" data-id="'+esc(e.id)+'"'+(canWrite?"":" disabled")+'>'+(on?"Ci sei ✓ ("+n+")":"Partecipo ("+n+")")+'</button>'+((x.by===me||isAdmin)?'<button class="btn ghost sm" data-act="dele" data-id="'+esc(e.id)+'">Elimina</button>':"")+'</div></div>';
+}
+function vEvents(){
+  var l=D.ev.slice().sort(function(a,b){return String(a.data().date).localeCompare(String(b.data().date));});
+  return '<h3 class="pad">Eventi e scioperi</h3>'+(l.length?l.map(evCard).join(""):'<p class="note">Nessun evento in programma.</p>');
+}
+function vCreate(){
+  var h='<div class="seg"><button data-act="ctype" data-id="pet" class="'+(ctype==="pet"?"on":"")+'">Petizione</button><button data-act="ctype" data-id="ev" class="'+(ctype==="ev"?"on":"")+'">Evento</button></div><div class="pad">';
+  if(ctype==="pet")h+='<label>Titolo</label><input id="t" maxlength="120" placeholder="Cosa vuoi chiedere?"><label>Categoria</label><select id="c">'+opts(CATS)+'</select><label>Descrizione</label><textarea id="d" maxlength="1500" placeholder="Perché è importante e a chi è rivolta"></textarea><label>Obiettivo firme</label><input id="g" type="number" min="1" value="100"><button class="btn" data-act="savep"'+(canWrite?"":" disabled")+'>Pubblica petizione</button>';
+  else h+='<label>Titolo</label><input id="et" maxlength="120" placeholder="Es. Presidio davanti al comune"><label>Luogo</label><input id="ep" maxlength="120"><label>Data e ora</label><input id="ed" type="datetime-local"><label>Dettagli</label><textarea id="ex" maxlength="800"></textarea><button class="btn" data-act="savee"'+(canWrite?"":" disabled")+'>Pubblica evento</button>';
+  return h+'</div>';
+}
+function vGroup(){
+  var p=pet(gid);if(!p)return '<p class="note">Petizione non trovata.</p>';
+  var x=p.data(),c=cnt(gid),g=Number(x.goal)||100,on=signed(gid),pct=Math.min(100,Math.round(c/g*100));
+  var h='<div class="pad" style="padding-top:10px"><button class="btn ghost sm" data-act="go" data-v="home">← Indietro</button></div><div class="media" style="margin-top:10px">'+scene(gid)+'</div><div class="pad" style="padding-top:12px"><span class="tag">'+esc(x.cat||"Altro")+'</span><h2>'+esc(x.title)+'</h2><div class="mut" style="white-space:pre-wrap">'+esc(x.description)+'</div><div class="bar"><i style="width:'+pct+'%"></i></div><b>'+c+' membri</b> <span class="mut">· obiettivo '+g+'</span><div style="margin-top:10px" class="row"><button class="btn'+(on?" ghost":"")+'" data-act="sign" data-id="'+esc(gid)+'"'+(canWrite?"":" disabled")+'>'+(on?"Esci dal gruppo e ritira la firma":"Firma e unisciti al gruppo")+'</button><button class="btn ghost sm" data-act="share" data-id="'+esc(gid)+'">Condividi</button></div>'+((x.by===me||isAdmin)?'<p><button class="btn ghost sm" data-act="delp" data-id="'+esc(gid)+'">Elimina la mia petizione</button></p>':"");
+  if(!on)return h+'<p class="note">Firma per entrare nel gruppo: potrai chattare con gli altri e organizzare uno sciopero.</p></div>';
+  h+='<h3>Organizza uno sciopero</h3>';
+  if(sform)h+='<label>Titolo</label><input id="st" maxlength="120" placeholder="Es. Sciopero generale"><label>Luogo</label><input id="sp" maxlength="120"><label>Data e ora</label><input id="sd" type="datetime-local"><label>Dettagli</label><textarea id="sx" maxlength="800"></textarea><div class="row"><button class="btn ghost" data-act="sform">Annulla</button><button class="btn" data-act="saves">Proponi</button></div>';
+  else h+='<button class="btn" data-act="sform">+ Proponi uno sciopero al gruppo</button>';
+  h+='</div>';
+  var es=D.ev.filter(function(e){return e.data().pid===gid;});
+  h+=es.map(evCard).join("");
+  h+='<div class="pad"><h3>Chat del gruppo</h3><div class="chat" id="chatbox">';
+  var l=D.gchat.filter(function(m){return m.data().pid===gid;}).sort(function(a,b){return a.data().at-b.data().at;}).slice(-100);
+  if(!l.length)h+='<p class="note">Nessun messaggio. Salutate il gruppo.</p>';
+  l.forEach(function(m){var y=m.data();h+='<div class="bub'+(y.by===me?" me":"")+'"><small>'+esc(y.nick||"Anonimo")+(isAdmin?' <button class="ib" data-act="delm" data-c="gchat" data-id="'+esc(m.id)+'">✕</button>':"")+'</small>'+esc(y.text)+'</div>';});
+  return h+'</div><input id="gn" maxlength="24" placeholder="Il tuo nome (facoltativo)" value="'+esc(nick)+'"><div class="row"><input id="gm" maxlength="400" placeholder="Scrivi al gruppo…"><button class="btn sm" data-act="gsend">Invia</button></div></div>';
+}
+function vChat(){
+  var h='<div class="pad" style="padding-top:12px"><h2>Chat aperta</h2><p class="mut">Dì ciò che pensi. Rispetta gli altri: niente insulti né minacce.</p><div class="chat" id="chatbox">';
+  var l=D.chat.slice().sort(function(a,b){return a.data().at-b.data().at;}).slice(-100);
+  if(!l.length)h+='<p class="note">Nessun messaggio. Scrivi il primo.</p>';
+  l.forEach(function(m){var y=m.data();h+='<div class="bub'+(y.by===me?" me":"")+'"><small>'+esc(y.nick||"Anonimo")+(isAdmin?' <button class="ib" data-act="delm" data-c="chat" data-id="'+esc(m.id)+'">✕</button>':"")+'</small>'+esc(y.text)+'</div>';});
+  return h+'</div><input id="cn" maxlength="24" placeholder="Il tuo nome (facoltativo)" value="'+esc(nick)+'"><div class="row"><input id="cm" maxlength="400" placeholder="Scrivi un messaggio…"><button class="btn sm" data-act="csend"'+(canWrite?"":" disabled")+'>Invia</button></div></div>';
+}
+function vProfile(){
+  var mine=D.mem.filter(function(m){return m.id===me;})[0],by={},tot=D.pl.reduce(function(t,p){return t+(Number(p.data().amount)||0);},0);
+  D.mem.forEach(function(m){var k=m.data().settore||"Altro";by[k]=(by[k]||0)+1;});
+  var gs=D.sig.filter(function(s){return s.data().uid===me;}).length;
+  var h=(me?'<div class="card"><button class="btn ghost" data-act="logout">Esci</button></div>':'<div class="card"><button class="btn" data-act="go" data-v="auth">Accedi o registrati</button></div>')+'<div class="stats"><div><div class="ring av" style="margin:0 auto"><i>👤</i></div></div><div><b>'+gs+'</b>gruppi</div><div><b>'+D.mem.length+'</b>iscritti</div></div>';
+  h+='<div class="card"><span class="tag">VERSO UN SINDACATO</span>';
+  Object.keys(by).forEach(function(k){h+='<div class="row" style="justify-content:space-between"><span>'+esc(k)+'</span><b>'+by[k]+'</b></div>';});
+  if(mine)h+='<h2 style="margin-top:10px">Sei iscritto ✓</h2><div class="mut">Settore: '+esc(mine.data().settore)+'</div><p><button class="btn ghost" data-act="leave">Annulla iscrizione</button></p></div>';
+  else h+='<h2 style="margin-top:10px">Iscriviti</h2><label>Nome e cognome</label><input id="jn" maxlength="80"><label>Email</label><input id="je" type="email" maxlength="120"><label>Città</label><input id="jc" maxlength="60"><label>Settore di lavoro</label><select id="js">'+opts(SECT)+'</select><label class="chk"><input type="checkbox" id="jp"><span>Acconsento al trattamento dei miei dati per essere contattato/a. Nome ed email sono visibili solo agli amministratori.</span></label><button class="btn" data-act="join"'+(canWrite?"":" disabled")+'>Invia iscrizione</button></div>';
+  h+='<div class="card"><span class="tag">SOSTIENI LA CAMPAGNA</span><h2>Dona</h2><div class="amts">'+[5,10,25,50,100].map(function(a){return '<button data-act="amt" data-id="'+a+'" class="'+(a===amt?"on":"")+'">€'+a+'</button>';}).join("")+'</div><button class="btn" data-act="donate"'+(canWrite||DONATION_URL?"":" disabled")+'>Dona €'+amt+'</button><p class="mut">€'+tot+' promessi da '+D.pl.length+' persone. Il pagamento reale non è ancora attivo: per ora si registra l’intenzione di donare.</p></div>';
+  if(isAdmin){h+='<div class="card"><h2>Iscritti (solo amministratori)</h2>';if(!D.apps.length)h+='<div class="mut">Nessuna iscrizione.</div>';D.apps.forEach(function(a){var y=a.data();h+='<p style="margin:0 0 8px"><b>'+esc(y.nome)+'</b> · '+esc(y.citta)+' · '+esc(y.settore)+'<br><span class="mut">'+esc(y.email)+'</span></p>';});h+='</div>';}
+  return h;
+}
+var V={auth:vAuth,home:vHome,search:vSearch,events:vEvents,create:vCreate,profile:vProfile,chat:vChat,group:vGroup};
+function nav(){
+  var T=[["home","home"],["search","search"],["create","plus"],["events","cal"],["profile","user"]],cur=view==="group"||view==="chat"?(view==="group"?"home":""):view;
+  navEl.innerHTML=T.map(function(t){return '<button class="'+(cur===t[0]?"on":"")+'" data-act="go" data-v="'+t[0]+'" aria-label="'+t[0]+'">'+ic(t[1])+'</button>';}).join("");
+}
+function render(){
+  nav();
+  if(!db){app.innerHTML='<p class="note">Apri la pagina da un account Claude per partecipare.</p>';return;}
+  var kept={},fid=document.activeElement&&document.activeElement.id,fs=null;
+  app.querySelectorAll("input[id],textarea[id],select[id]").forEach(function(e){kept[e.id]=e.type==="checkbox"?e.checked:e.value;if(e.id===fid)fs=e.selectionStart;});
+  app.innerHTML=(msg?'<div class="toast">'+esc(msg)+'</div>':"")+V[view]();
+  Object.keys(kept).forEach(function(k){var e=document.getElementById(k);if(e){if(e.type==="checkbox")e.checked=kept[k];else e.value=kept[k];}});
+  if(fid){var fe=document.getElementById(fid);if(fe){fe.focus();try{if(fs!=null)fe.setSelectionRange(fs,fs);}catch(x){}}}
+  var cb=document.getElementById("chatbox");if(cb)cb.scrollTop=cb.scrollHeight;
+}
+function toggle(coll,id,data){var ref=db.collection(coll).doc(id),has=(coll==="signatures"?D.sig:D.rsvp).some(function(s){return s.id===id;});return (has?ref.delete():ref.set(data)).catch(fail);}
+var A={
+login:function(){sb.auth.signInWithPassword({email:v("ae"),password:document.getElementById("ap").value}).then(function(r){if(r.error){msg="Email o password errati.";render();}else location.reload();});},
+signup:function(){var e=v("ae"),p=document.getElementById("ap").value;if(!e||p.length<8){msg="Inserisci email e una password di almeno 8 caratteri.";render();return;}sb.auth.signUp({email:e,password:p}).then(function(r){if(r.error){msg="Registrazione non riuscita: "+r.error.message;render();}else if(r.data.session)location.reload();else{msg="Ti abbiamo scritto: conferma l’email, poi accedi.";render();}});},
+logout:function(){sb.auth.signOut().then(function(){location.reload();});},
+delm:function(t){if(confirm("Rimuovere il messaggio?"))db.collection(t.dataset.c).doc(t.dataset.id).delete().catch(fail);},
+go:function(t){view=t.dataset.v;msg="";sform=false;window.scrollTo(0,0);render();},
+cat:function(t){cat=t.dataset.id;render();},
+group:function(t){gid=t.dataset.id;view="group";msg="";sform=false;window.scrollTo(0,0);render();},
+sign:function(t){var id=t.dataset.id;if(!canWrite)return;toggle("signatures",id+"_"+me,{pid:id,uid:me,at:Date.now()});},
+rsvp:function(t){var id=t.dataset.id;toggle("rsvps",id+"_"+me,{eid:id,uid:me,at:Date.now()});},
+share:function(t){var p=pet(t.dataset.id),txt="Firma la petizione “"+(p?p.data().title:"")+"”";
+  if(navigator.share)navigator.share({title:"Uniti si cambia",text:txt,url:location.href}).catch(function(){});
+  else if(navigator.clipboard)navigator.clipboard.writeText(txt+" "+location.href).then(function(){msg="Testo copiato negli appunti.";render();}).catch(function(){});},
+ctype:function(t){ctype=t.dataset.id;render();},
+savep:function(){var t=v("t"),d=v("d");if(!t||!d){msg="Inserisci titolo e descrizione.";render();return;}
+  db.collection("petitions").add({title:t,description:d,cat:v("c"),goal:parseInt(v("g"),10)||100,by:me,at:Date.now()}).then(function(r){return db.collection("signatures").doc(r.id+"_"+me).set({pid:r.id,uid:me,at:Date.now()}).then(function(){gid=r.id;view="group";msg="Petizione pubblicata: sei il primo membro del gruppo.";render();});}).catch(fail);},
+savee:function(){var t=v("et"),p=v("ep"),d=v("ed");if(!t||!p||!d){msg="Inserisci titolo, luogo e data.";render();return;}
+  db.collection("events").add({title:t,place:p,date:d,desc:v("ex"),by:me,at:Date.now()}).then(function(){view="events";msg="Evento pubblicato.";render();}).catch(fail);},
+sform:function(){sform=!sform;render();},
+saves:function(){var t=v("st"),p=v("sp"),d=v("sd");if(!t||!p||!d){msg="Inserisci titolo, luogo e data.";render();return;}
+  db.collection("events").add({title:t,place:p,date:d,desc:v("sx"),kind:"sciopero",pid:gid,by:me,at:Date.now()}).then(function(){sform=false;msg="Sciopero proposto al gruppo.";render();}).catch(fail);},
+gsend:function(){var t=v("gm");nick=v("gn");if(!t||!signed(gid))return;document.getElementById("gm").value="";db.collection("gchat").add({pid:gid,text:t,nick:nick,by:me,at:Date.now()}).catch(fail);},
+csend:function(){var t=v("cm");nick=v("cn");if(!t)return;document.getElementById("cm").value="";db.collection("chat").add({text:t,nick:nick,by:me,at:Date.now()}).catch(fail);},
+delp:function(t){if(confirm("Eliminare questa petizione?"))db.collection("petitions").doc(t.dataset.id).delete().then(function(){view="home";render();}).catch(fail);},
+dele:function(t){if(confirm("Eliminare questo evento?"))db.collection("events").doc(t.dataset.id).delete().catch(fail);},
+amt:function(t){amt=Number(t.dataset.id);render();},
+donate:function(){if(DONATION_URL){window.open(DONATION_URL,"_blank");return;}db.collection("pledges").add({amount:amt,by:me,at:Date.now()}).then(function(){msg="Grazie! La tua promessa di €"+amt+" è registrata.";render();}).catch(fail);},
+join:function(){var n=v("jn"),e=v("je"),c=v("jc"),st=v("js"),ok=document.getElementById("jp").checked;
+  if(!n||!e||e.indexOf("@")<1||!c){msg="Compila nome, email valida e città.";render();return;}
+  if(!ok){msg="Serve il consenso al trattamento dei dati.";render();return;}
+  var t=Date.now();db.collection("members").doc(me).set({settore:st,at:t}).then(function(){return db.collection("applications").doc(me).set({nome:n,email:e,citta:c,settore:st,at:t});}).then(function(){msg="Iscrizione inviata. Benvenuto/a!";render();}).catch(fail);},
+leave:function(){if(confirm("Annullare l’iscrizione?"))db.collection("applications").doc(me).delete().then(function(){return db.collection("members").doc(me).delete();}).catch(fail);}
+};
+var W={sign:1,rsvp:1,savep:1,savee:1,saves:1,gsend:1,csend:1,delp:1,dele:1,donate:1,join:1,leave:1,delm:1};
+function run(t){var a=t.dataset.act;if(W[a]&&!me){view="auth";msg="Accedi per partecipare.";render();return;}if(A[a])A[a](t);}
+app.addEventListener("click",function(e){var t=e.target.closest("[data-act]");if(t)run(t);});
+navEl.addEventListener("click",function(e){var t=e.target.closest("[data-act]");if(t)A.go(t);});
+document.querySelector(".top").addEventListener("click",function(e){var t=e.target.closest("[data-act]");if(t)A.go(t);});
+app.addEventListener("input",function(e){if(e.target.id==="q"){q=e.target.value;render();}});
+app.addEventListener("keydown",function(e){if(e.key!=="Enter")return;var m={gm:"gsend",cm:"csend"}[e.target.id];if(m){e.preventDefault();A[m]();}});
+function sub(name,key){db.collection(name).onSnapshot(function(s){D[key]=s.docs;render();},function(){});}
+var sb=window.supabase.createClient("https://udapbrjuyovhxngghldm.supabase.co","sb_publishable__2ytTifmszZePux-zEaNuQ_7OsWqZsS");
+function mkDb(){
+  function chk(r){if(r.error)throw r.error;}
+  function rid(){return (window.crypto&&crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random()).replace(/[^a-z0-9]/gi,"");}
+  return {collection:function(name){return {
+    add:function(d){var id=rid();return sb.from("docs").insert({coll:name,id:id,data:d}).then(function(r){chk(r);return {id:id};});},
+    doc:function(id){return {
+      set:function(d){return sb.from("docs").upsert({coll:name,id:id,data:d}).then(chk);},
+      delete:function(){return sb.from("docs").delete().eq("coll",name).eq("id",id).then(chk);}};},
+    onSnapshot:function(next,err){
+      function load(){sb.from("docs").select("id,data").eq("coll",name).order("created_at",{ascending:true}).then(function(r){if(r.error){if(err)err(r.error);return;}next({docs:r.data.map(function(x){return {id:x.id,data:function(){return x.data;}};})});});}
+      load();
+      var ch=sb.channel("c_"+name+"_"+rid()).on("postgres_changes",{event:"*",schema:"public",table:"docs",filter:"coll=eq."+name},load).subscribe();
+      var t=setInterval(load,30000);
+      return function(){clearInterval(t);sb.removeChannel(ch);};}
+  };}};
+}
+function vAuth(){
+  return '<div class="card"><h2>Accedi o registrati</h2><p class="mut">Serve un account per firmare, scrivere e partecipare. Puoi sfogliare tutto anche senza.</p><label>Email</label><input id="ae" type="email" autocomplete="email"><label>Password (almeno 8 caratteri)</label><input id="ap" type="password" autocomplete="current-password"><div class="row"><button class="btn" data-act="login">Accedi</button><button class="btn ghost" data-act="signup">Crea account</button></div></div>';
+}
+async function init(){
+  db=mkDb();render();
+  try{
+    var s=await sb.auth.getSession();me=s.data.session?s.data.session.user.id:null;
+    if(me){var a=await sb.from("admins").select("user_id");isAdmin=!!(a.data&&a.data.length);}
+    sb.auth.onAuthStateChange(function(ev){if((ev==="SIGNED_IN"&&!me)||ev==="SIGNED_OUT")location.reload();});
+  }catch(e){}
+  sub("petitions","pet");sub("signatures","sig");sub("events","ev");sub("rsvps","rsvp");sub("chat","chat");sub("gchat","gchat");sub("members","mem");sub("pledges","pl");
+  if(isAdmin)sub("applications","apps");
+  render();
+}
+init();
+})();
+</script>
+</body>
+</html>
